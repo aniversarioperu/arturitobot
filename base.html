@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tuits georeferenciados en la cercanía de penales</title>
+        <style>
+            #map_canvas {
+                width: 1000px;
+                height: 600px;
+                background-color: #CCC;
+            }
+        </style>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?libraries=geometry,visualization&sensor=false"></script>
+        <script>
+            function initialize() {
+
+                var carceles = 
+                [
+"Penal Diroes",
+"Penal de Sullana",
+"Penal de Picsi (Chiclayo)",
+"Penal de Trujillo",
+"Penal de Huacariz",
+"Penal de Chota",
+"Penal de Jaen",
+"Penal de Huaraz",
+"Penal Santa Mónica",
+"Penal de Lurigancho",
+"Penal Castro Castro",
+"Penal San Jorge",
+"Penal de Cañete",
+"Penal de Huaral",
+"Penal de Carquin",
+"Penal de Piedras Gordas",
+"Carceleta Palacio de Justicia",
+"Penal de Huánuco",
+"Penal de Pucallpa",
+"Penal Maranguita"
+]
+                var results = 
+[
+["","Penal Diroes",-12.040680,-76.911100],
+["","Penal de Sullana",-4.897520,-80.694610],
+["","Penal de Picsi (Chiclayo)",-6.718340,-79.762860],
+["","Penal de Trujillo",-8.027400,-79.056820],
+["","Penal de Huacariz",-7.190370,-78.48610],
+["","Penal de Chota",-6.55830,-78.663350],
+["","Penal de Jaen",-5.709670,-78.805790],
+["","Penal de Huaraz",-9.526860,-77.534550],
+["","Penal Santa Mónica",-12.173530,-77.019070],
+["","Penal de Lurigancho",-11.991860,-76.996690],
+["","Penal Castro Castro",-11.983700,-76.989520],
+["","Penal San Jorge",-12.056480,-77.027890],
+["","Penal de Cañete",-13.06210,-76.295730],
+["","Penal de Huaral",-11.546450,-77.160430],
+["","Penal de Carquin",-11.089630,-77.624750],
+["","Penal de Piedras Gordas",-11.811420,-77.120070],
+["","Carceleta Palacio de Justicia",-12.057670,-77.034920],
+["","Penal de Huánuco",-9.966680,-76.252900],
+["","Penal de Pucallpa",-8.406420,-74.630590],
+["","Penal Maranguita",-8.409880,-74.55280],
+                
+                {% content %}
+];
+
+                var map_canvas = document.getElementById('map_canvas');
+                var map_options = {
+                    center: new google.maps.LatLng(-12.0885, -77.04418),
+                    zoom: 12,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(map_canvas, map_options);
+                var infowindow = new google.maps.InfoWindow({
+                    disableAutoPan: false
+                });
+
+
+                for(var i = 0; i < results.length; i++) {
+                    if( carceles.indexOf(results[i][1]) >= 0 ) {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(results[i][2], results[i][3]),
+                            title: results[i][1],
+                            icon: 'img/agent.png',
+                            zIndex: 9999,
+                            map: map
+                        });
+                    }
+                    else {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(results[i][2], results[i][3]),
+                            title: results[i][1],
+                            map: map
+                       });
+                    }
+
+                    google.maps.event.addListener(marker, "click", (function(marker, i) {
+                        return function() {
+                            if( results[i][0] == "") {
+                                out = results[i][1];
+                            }
+                            else {
+                                var out = "<img src='avatars/" + results[i][1].toLowerCase() + ".jpg' />";
+                                out += " " + results[i][1] + "<br />";
+                                out += "<a target='_blank' href='https://twitter.com/";
+                                out += results[i][1] + "/status/" + results[i][0] + "'>";
+                                out += " ver tuit original</a>";
+                            }
+                            infowindow.setContent(out);
+                            infowindow.open(map, marker);
+                        }
+                   })(marker, i));
+             }
+         }
+         google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+  <body>
+      <h2>Tuits georeferenciados en la cercanía de penales</h2>
+      <p>Este es un mapa interactivo. Creado por <a href="https://twitter.com/aniversarioperu">@AniversarioPeru</a></p>
+      <p>Click en cada <i>marker</i> para acceder al tuit original.</p>
+      <div id="map_canvas"></div>
+
+  </body>
+</html>
