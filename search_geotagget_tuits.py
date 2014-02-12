@@ -14,6 +14,7 @@ import re
 from lib import download_profile_image
 from lib import create_database
 from lib import insert_data
+from lib import calc_distance
 
 def fetch_tuits(geocode, carcel):
     oauth = api.get_oauth()
@@ -37,16 +38,17 @@ def fetch_tuits(geocode, carcel):
 
     if next_results == "None":
         time.sleep(6)
-        next_results = do_request(url, oauth, carcel, payload)
+        next_results = do_request(url, oauth, carcel, payload, geocode)
 
     while next_results != "None":
         time.sleep(6)
         url = "https://api.twitter.com/1.1/search/tweets.json" + next_results
 
-        next_results = do_request(url, oauth, carcel, payload=None)
+        payload = None
+        next_results = do_request(url, oauth, carcel, payload, geocode)
     
 
-def do_request(url, oauth, carcel, payload):
+def do_request(url, oauth, carcel, payload, geocode):
     if payload != None:
         r = requests.get(url=url, auth=oauth, params=payload)
         data = r.json()
@@ -80,17 +82,18 @@ def do_request(url, oauth, carcel, payload):
         user_id = status['user']['id']
         obj['user_id'] = user_id
 
+        created_at = status['created_at']
+        obj['created_at'] = created_at
+        
         if 'geo' in status and status['geo'] != None:
             latitude = status['geo']['coordinates'][0]
             longitude = status['geo']['coordinates'][1]
             obj['latitude'] = latitude
             obj['longitude'] = longitude
 
-        created_at = status['created_at']
-        obj['created_at'] = created_at
-
-        print status['text']
-        insert_data(obj)
+            if calc_distance(latitude, longitude, float(geocode.split(",")[0]), float(geocode.split(",")[1])) < 1.1:
+                print status['text']
+                insert_data(obj)
 
     return next_results
 

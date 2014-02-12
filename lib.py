@@ -1,3 +1,24 @@
+
+def calc_distance(lat1, lon1, lat2, lon2):
+    # calcular distancia en km entre dos puntos geograficos usando la formula de
+    # Haversine. Fuente: http://gis.stackexchange.com/questions/61924/python-gdal-degrees-to-meters-without-reprojecting
+    """
+    Calculate the great circle distance between two points
+    on the earth (specified in decimal degrees)
+    """
+    from math import cos, sin, asin, sqrt, radians
+
+    # convert decimal degrees to radians
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+    c = 2 * asin(sqrt(a))
+    km = 6371 * c
+    return km
+
+
 def insert_data(obj):
     import dataset
     db = dataset.connect('sqlite:///tuits.db')
@@ -53,8 +74,15 @@ def download_profile_image(url, screen_name):
             with open(path, 'wb') as f:
                 for chunk in r.iter_content():
                     f.write(chunk)
-    else:
-        print "We got avatar for %s" % screen_name
 
     return screen_name.lower()
+
+def delete_tuits_no_coords():
+    import dataset
+    # drop tuits with no coordinates
+    db = dataset.connect("sqlite:///tuits.db")
+    table = db['tuits']
+    table.delete(latitude=None)
+
+
 
