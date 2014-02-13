@@ -92,7 +92,7 @@ def do_request(url, oauth, carcel, payload, geocode):
             obj['longitude'] = longitude
 
             if calc_distance(latitude, longitude, float(geocode.split(",")[0]), float(geocode.split(",")[1])) < 1.1:
-                print status['text']
+                print obj['status_id'], calc_distance(latitude, longitude, float(geocode.split(",")[0]), float(geocode.split(",")[1]))
                 insert_data(obj)
 
     return next_results
