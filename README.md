@@ -1,95 +1,58 @@
-# Región Norte - Chiclayo
-Cárceles:
+# Bot patrolling jails in Peru from Twitter
 
-    * diroes: -12.040685 -76.911102
-    * ep_tumbes:   Predio Zarumilla Puerto El Cura
-    * ep_piura (Rio Seco):    Pan. Norte Carretera Paita, Castilla, Piura, Piura.
-    * ep_huancabamba:   Av. Ramon Castilla S/N Huancabamba, Piura
-    * ep_sullana: -4.897527 -80.694613 Calle Maria Auxiliadora N103 Sullana,
-      Piura.
-    * ep_chiclayo: -6.718345 -79.762868 (Picsi) Fundo Santa Maria del Rocio, Picsi,
-      Chiclayo, Lambayeque.
-    * ep_trujillo: -8.027402 -79.056827 Panamericana Norte km570, Huanchaco,
-      La Esperanza, Trujillo, La Libertad.
-    * ep_huacariz:  -7.190379 -78.48616 Fundo Huacariz, Huacariz, Cajamarca
-    * ep_chota:     -6.55831 -78.663357 Jr. Garcilazo de la Vega 231, Chota,
-      Chota, Cajamarca.
-    * ep_jaen: -5.709677 -78.805791 Av. Mariano Melgar - Manco Capac, Jaen, Cajamarca.
-    * ep_san_ignacio: Caserio Santiago KM1, San Ignacio, Cajamarca.
+This bot has been developed by [@AniversarioPeru](https://twitter.com/aniversarioperu).
 
-# Region Lima
+This bot uses the Twitter API 1.1 to collect tweets sent from the proximity of
+each jail in Peru.
 
-* ep_huaraz: -9.526861 -77.534553 Av. Bolognesi S/N, Huaraz, Ancash
-* ep_chimbote (cambio de puente):  Cambio de Puente S/N, Chimbote, Santa,
-  Ancash.
-* ep_santa_monica: -12.173532 -77.019076 Av. Huaylas S/N Cuadra 10, Chorrillos,
-  Lima.
-* ep_lurigancho: -11.991868 -76.996697 Av. El Sol S/N, S.J. de Lurigancho,
-  Lima.
-* ep_castro_castro: -11.983703 -76.989528 Av. Santa Rosa S/N, S.J. de
-  Lurigancho, Lima.
-* ep_san_jorge: -12.056486 -77.027899 Av. Nicolas de Pierla S/N Cdra. 14, Lima.
-* ep_callao: Prolongación Centenario S/N, Callao.
-* ep_canete: -13.06213 -76.295739  Nuevo Imperial, Cantera Alta, Nuevo
-  Imperial, Cañete, Lima.
-* ep_huaral: -11.546456 -77.160439 Comunidad Campesina Aucallama, Aucallama,
-  Huaral.
-* ep_carquin: -11.089639 -77.624755 Av. Industrial S/N, Carquin, Huaura, Lima.
-* ep_ica: Caserio Cachiche S/N, Ica.
-* ep_ancon -11.811425 -77.120079 Piedras Gordas: Panamericana Norte Km 42,
-  Ancon, Lima.
-* ep_lima  -12.057672 -77.034927 Carceleta: Jr. Aljovín S/N Palacio Justicia, Lima.
-* diroes -12.040685 -76.911102 Ex Fundo Barbadillo, Ate, Lima.
-* ep_yauyos: Jr. Trujillo 189, Yautos, Lima.
-* ep_huanuco: -9.966684 -76.252908 Caserio Potranca - Cayhuana, Huanuco.
-* ep_pucallpa: -8.406425 -74.630594 Carretera Federico Basadre Km 11.8000, Pucallpa, Ucayali.
-* ep_maranguita: -8.409885 -74.55284 Pucallpa.
-* ep_la_union: Jr. Comercio S/N Cuadra 18, La Union, Dos de Mayo, Huanuco.
-* ep_cerro_de_pasco: Barrio Buenos Aires S/N, Simon Bolivar, Cerro de Pasco,
-  Pasco.
+All tweets are kept into a local SQLite database and mapped onto a Google Maps
+page.
 
-# Region Nor Oriente - San Martín
-* ep_chachapoyas		Comunidad de Huancas Km. 12 HUANCAS CHACHAPOYAS AMAZONAS		
-* E.P. DE IQUITOS	LORETO	MAYNAS	IQUITOS	Carret. Guayabamba km. 18.200
-* E.P. DE BAGUA GRANDE	AMAZONAS	 UTCUBAMBA	BAGUA GRANDE	Av. Daniel Alcides Carrión 772 
-* E.P. DE MOYOBAMBA	SAN MARTIN	MOYOBAMBA	MOYOBAMBA	Sector Shango – Barrio de Belen
-* E.P. DE TARAPOTO	SAN MARTIN	TARAPOTO	TARAPOTO	Av. Circunvalación S/N. Cdra. 11
-* E.P. DE SANAGUILLO	SAN MARTIN	TARAPOTO	TARAPOTO	Pampas de Sananguillo
+You can see the mapped tweets here <http://horis.me/arturitobot>
 
-# Centro Huancayo
-* E.P. DE HUANCAYO	JUNIN	CHUPACA	HUMANCACA CHICO	Av. 28 de Julio S/N
-* E.P. MUJERES DE CONCEPCION	JUNIN	CONCEPCION	CONCEPCION	Barrio Tambo Alapa S/N.
-* E.P. CHANCHAMAYO	JUNIN	CHANCHAMAYO	LA MERCED	Av. Pacherra S/N.
-* E.P. DE SATIPO	JUNIN	SATIPO	SATIPO	Av. Augusto B. Leguia N° 767
-* E.P. DE TARMA	JUNIN	TARMA	TARMA	Jr. Leoncio Prado N° 123
-* E.P. DE LA OROYA	JUNIN	OROYA	STA. ROSA DE SACCO	Av. M. Grau y Psje. Los Angeles
-* E.P. DE HUANCAVELICA	HUANCAVELICA	HUANCAVELICA	HUANCAVELICA	Av. San Juan Evangelista S/N.
-* E.P. DE AYACUCHO (Yanamilla)	AYACUCHO	HUAMANGA	AYACUCHO	Caserio Yanamilla – Aeropuerto
-* E.P. DE HUANTA	AYACUCHO	HUANTA	HUANTA	Av. Gervacio Santillana N° 914
+If a tweet is sent from within any jail, the bot will retweet it from its own
+Twitter account [@ArturitoBot](https://twitter.com/ArturitoBot).
 
-# Sur Oriente Cusco
-* ESTABLECIMIENTO PENITENCIARIO	D 10   Cercado
-* E.P. DE ABANCAY	APURIMAC	ABANCAY	ABANCAY	Jr. Diaz Barcena N° 104
-* E.P. DE ANDAHUAYLAS	APURIMAC	ANDAHUAYLAS	ANDAHUAYLAS	Jr. Ayacucho S/N. (costado Mod.Básico Justicia)
-* E.P. DE CUSCO (QUENCCORO)	CUSCO	CUSCO	SAN JERONIMO	Av. La Cultura Km. 5.5 San Jerónimo
-* E.P. DE MUJERES CUSCO (QUENCCORO)	CUSCO	CUSCO	SAN JERONIMO	Av. La Cultura Km. 5.5 San Jerónimo
-* E.P. DE SICUANI	CUSCO	CANCHIS	SICUANI	Av. Centenario N° 530
-* E.P. DE QUILLABAMBA	CUSCO	LA CONVENCION	QUILLABAMBA	Av. Nicanor Larrea S/N.
-* E.P. PUERTO MALDONADO	MADRE DE DIOS	TAMBOPATA	TAMBOPATA	Carretera La Joya Km. 3.5
+**ArturitoBot** is also explained in the blog [Útero de
+Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-peru-desde-twitter/)
+[in Spanish].
 
-# Sur Arequipa
-* E.P. DE AREQUIPA	AREQUIPA	AREQUPA	SOCABAYA	Quebrada La Chuca
-* E.P. MUJERES DE AREQUIPA	AREQUIPA	AREQUPA	SOCABAYA	Quebrada La Chuca
-* E.P. DE CAMANA	AREQUIPA	CAMANA	MRCAL. CACERES	Centro Poblado Pucchún
-* E.P. DE MOQUEGUA	MOQUEGUA	MRCAL. NIETO	SAMEGUA	Av. Andrés A. Caceres S/N.
-* E.P. DE TACNA	TACNA	TACNA	POCOLLAY	Prolong. Av. Hnos. Reynoso S/N
-* E.P. DE MUJERES DE TACNA	TACNA	TACNA	POCOLLAY	Prolong. Av. Hnos. Reynoso S/N
+# Jails missing coordinates
 
-# Altiplano Puno
-* E.P. DE LAMPA	PUNO	LAMPA	LAMPA	Av. Enrique Torres Belón/Jr.28 de Julio
-* EP. DE JULIACA (LA CAPILLA)	PUNO	SAN ROMAN	JULIACA	Av.José Santos Chocano Mz"H" Lote"M4"
-* EP. DE PUNO (YANAMAYO)	PUNO	PUNO	PUNO	Carretera Tiquillaca Km. 5
-* EP. DE CHALLAPALCA	TACNA	TARATA	TICACO	Fuerte Inclán – Ejercito Peruano
+* E.P. DE TUMBES	Predio Zarumilla - Puerto El Cura, TUMBES, TUMBES
+* E.P. DE PIURA (RIO SECO)	Pan. Norte-Carretera Paita, PIURA, CASTILLA
+* E.P. DE HUANCABAMBA	Av. Ramón Castilla S/N., HUANCABAMBA, HUANCABAMBA
+* E.P. DE SAN IGNACIO	Caserio Santiago Km. 1, SAN IGNACIO, SAN IGNACIO
+* E.P. CHIMBOTE (CAMBIO PUENTE) 	Cambio de Puente S/N, SANTA , CHIMBOTE
+* E.P. DEL CALLAO	Prolong. Centenario S/N. Callao, CALLAO, CALLAO
+* E.P. DE ICA	Caserio Cachiche S/N., ICA, ICA
+* EP. DE YAUYOS	Jr. Trujillo Nº 189 , YAUYOS, YAUYOS
+* E.P. DE LA UNION	Jr. Comercio S/N. Cuadra 18, DOS DE MAYO, LA UNION
+* E.P. DE CERRO DE PASCO	Barrio Buenos Aires S/N., CERRO DE PASCO, SIMON BOLIVAR
+* E.P. DE IQUITOS 	Carret. Guayabamba km. 18.200, MAYNAS, IQUITOS
+* E.P. DE BAGUA GRANDE 	Av. Daniel Alcides Carrión 772 Urb. Gonchillo., UTCUBAMBA, BAGUA GRANDE
+* E.P. DE TARAPOTO	Av. Circunvalación S/N. Cdra. 11, TARAPOTO, TARAPOTO
+* E.P. DE SANAGUILLO	Pampas de Sananguillo, TARAPOTO, TARAPOTO
+* E.P. DE HUANCAYO	Av. 28 de Julio S/N, CHUPACA, HUMANCACA CHICO
+* E.P. MUJERES DE CONCEPCION	Barrio Tambo Alapa S/N., CONCEPCION, CONCEPCION
+* E.P. CHANCHAMAYO	Av. Pacherra S/N., CHANCHAMAYO, LA MERCED
+* E.P. DE SATIPO	Av. Augusto B. Leguia N° 767, SATIPO, SATIPO
+* E.P. DE LA OROYA	Av. M. Grau y Psje. Los Angeles, OROYA, STA. ROSA DE SACCO
+* E.P. DE AYACUCHO (Yanamilla)	Caserio Yanamilla ??Aeropuerto, HUAMANGA, AYACUCHO
+* E.P. DE HUANTA	Av. Gervacio Santillana N° 914, HUANTA, HUANTA
+* E.P. DE ABANCAY	Jr. Diaz Barcena N° 104, ABANCAY, ABANCAY
+* E.P. DE ANDAHUAYLAS	Jr. Ayacucho S/N. (costado Mod.Básico Justicia), ANDAHUAYLAS, ANDAHUAYLAS
+* E.P. DE SICUANI	Av. Centenario N° 530, CANCHIS, SICUANI
+* E.P. DE QUILLABAMBA	Av. Nicanor Larrea S/N., LA CONVENCION, QUILLABAMBA
+* E.P. DE AREQUIPA 	Quebrada La Chuca, AREQUPA, SOCABAYA
+* E.P. DE CAMANA 	Centro Poblado Pucchún, CAMANA, MRCAL. CACERES
+* E.P. DE MOQUEGUA	Av. Andrés A. Caceres S/N., MRCAL. NIETO, SAMEGUA
+* E.P. DE TACNA	Prolong. Av. Hnos. Reynoso S/N, TACNA, POCOLLAY
+* E.P. DE LAMPA	Av. Enrique Torres Belón/Jr.28 de Julio, LAMPA, LAMPA	
+* EP. DE JULIACA (LA CAPILLA)	"Av.José Santos Chocano Mz""H"" Lote""M4"", SAN ROMAN, JULIACA"
+* EP. DE PUNO (YANAMAYO)	Carretera Tiquillaca Km. 5, PUNO, PUNO	
+* EP. DE CHALLAPALCA	Fuerte Inclán ??Ejercito Peruano, TARATA, TICACO
+
 
 * Buscar coordenadas de direcciones: http://www.agenciacreativa.net/coordenadas_google_maps.php
 * Todas las cárceles: http://www.inpe.gob.pe/contenidos.php?id=543&np=1&direccion=1
