@@ -85,4 +85,3 @@ def delete_tuits_no_coords():
     table.delete(latitude=None)
 
 
-
