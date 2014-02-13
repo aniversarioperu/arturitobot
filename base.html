@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Vigilando las cárceles peruanas desde Twitter</title>
+
+        <link rel="icon" type="image/png" href="favicon.png">
+
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
         <style>
-            body {
-                width: 900px;
-                margin-left:auto;
-                margin-right:auto;
-            }
             #map_canvas {
-                width: 1000px;
-                height: 600px;
+                width: 900px;
+                height: 500px;
                 background-color: #CCC;
             }
         </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
         <script
             src="https://maps.googleapis.com/maps/api/js?libraries=geometry,visualization&sensor=false"></script>
         <script>
@@ -121,23 +132,42 @@
         </script>
     </head>
   <body>
-      <h2>Tuits georeferenciados en la cercanía de las cárceles del Perú</h2>
-      <p>Este es un mapa interactivo. Creado por <a href="https://twitter.com/aniversarioperu">@AniversarioPeru</a>
+
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                <h2>Tuits georeferenciados en la cercanía de las cárceles del Perú</h2>
+                <p>Este es un mapa interactivo. Creado por 
+                <a
+                    href="https://twitter.com/aniversarioperu">@AniversarioPeru</a>.
+              </div>
+        </div>
       
 
-      Los ínconos de sombrero de policía corresponden a la ubicación de cada
-      una de las cárceles. Los otros marcadores son tuits que se han podido
-      georeferenciar porque incluyen coordenadas geográficas.</p>
+          <div class="row">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                Los ínconos de sombrero de policía corresponden a la ubicación de cada
+                una de las cárceles. Los otros marcadores son tuits que se han podido
+                georeferenciar porque incluyen coordenadas geográficas.</p>
 
-      <p>Hacer click en cada <i>marker</i> para acceder al tuit original.</p>
+                <p>Hacer click en cada <i>marker</i> para acceder al tuit original.</p>
+    
+                <p>La información es cosechada y el mapa elaborado por mi bot
+                llamado <a href="https://twitter.com/arturitobot">@ArturitoBot
+                    y que tiene una cuenta en twitter</a> donde
+                retuiteará aquellos tuits que se emitan desde dentro de las cárceles
+                peruanas.</p>
+              </div>
+        </div>
 
-      <p>La información es cosechada y el mapa elaborado por mi Twitter bot
-      llamado <a href="https://twitter.com/arturitobot">ArturitoBot y tiene una cuenta en twitter</a> donde
-      retuiteará aquellos tuits que se emitan desde dentro de las cárceles
-      peruanas</p>
+          <div class="row">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                  <div id="map_canvas"></div>
+              </div>
+        </div>
 
-      <div id="map_canvas"></div>
 
+    </div>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -149,6 +179,20 @@
   ga('send', 'pageview');
 
 </script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <hr class="hr-footer">
+
+<footer>
+<div class="container">
+    <small class="pull-right">Powered by <a href="http://aniversarioperu.wordpress.com/cv/">AniversarioPerú</a></small>
+</div>
+<br />
+</footer>
 
   </body>
 </html>
