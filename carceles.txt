@@ -1,5 +1,6 @@
 Carceleta Palacio de Justicia,-12.057672 -77.034927
 Penal Castro Castro,-11.983703 -76.989528
+Penal Chachapoyas,-6.160182 -77.867651
 Penal de Cañete,-13.06213 -76.295739
 Penal de Carquin,-11.089639 -77.624755
 Penal de Chota,-6.55831 -78.663357
