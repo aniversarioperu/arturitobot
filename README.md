@@ -4,7 +4,6 @@ This bot has been developed by [@AniversarioPeru](https://twitter.com/aniversari
 
 This bot uses the Twitter API 1.1 to collect tweets sent from the proximity of
 each jail in Peru.
-
 All tweets are kept into a local SQLite database and mapped onto a Google Maps
 page.
 
@@ -12,8 +11,7 @@ You can see the mapped tweets here <http://horis.me/arturitobot>
 
 If a tweet is sent from within any jail, the bot will retweet it from its own
 Twitter account [@ArturitoBot](https://twitter.com/ArturitoBot).
-
-**ArturitoBot** is also explained in the blog [Útero de
+More detailes on the making of **ArturitoBot** can be found in the blog [Útero de
 Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-peru-desde-twitter/)
 [in Spanish].
 
