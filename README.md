@@ -11,7 +11,7 @@ You can see the mapped tweets here <http://horis.me/arturitobot>
 
 If a tweet is sent from within any jail, the bot will retweet it from its own
 Twitter account [@ArturitoBot](https://twitter.com/ArturitoBot).
-More detailes on the making of **ArturitoBot** can be found in the blog [Útero de
+More details on the making of **ArturitoBot** can be found in the blog [Útero de
 Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-peru-desde-twitter/)
 [in Spanish].
 
