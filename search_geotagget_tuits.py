@@ -90,6 +90,7 @@ def do_request(url, oauth, carcel, payload, geocode):
             longitude = status['geo']['coordinates'][1]
             obj['latitude'] = latitude
             obj['longitude'] = longitude
+            obj['retuited'] = "no"
 
             if calc_distance(latitude, longitude, float(geocode.split(",")[0]), float(geocode.split(",")[1])) < 1.1:
                 print obj['status_id'], calc_distance(latitude, longitude, float(geocode.split(",")[0]), float(geocode.split(",")[1]))
