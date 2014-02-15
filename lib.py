@@ -1,3 +1,38 @@
+def tuit_inside_jail(status_id, poly):
+    """
+    Finds out whether a tuit has been posted from within a jail based on 
+    coordinates of a polygon.
+    http://stackoverflow.com/a/16625697
+    """
+    import dataset
+    import config
+    import os.path
+    import math
+
+    db_file = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + db_file)
+    table = db['tuits']
+    res = table.find_one(status_id=status_id)
+    y = res['latitude']
+    x = res['longitude']
+
+    n = len(poly)
+    inside = False
+
+    p1x,p1y = poly[0]
+    for i in range(n+1):
+        p2x,p2y = poly[i % n]
+        if y > min(p1y,p2y):
+            if y <= max(p1y,p2y):
+                if x <= max(p1x,p2x):
+                    if p1y != p2y:
+                        xints = (y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
+                    if p1x == p2x or x <= xints:
+                        print p1x
+                        inside = not inside
+        p1x,p1y = p2x,p2y
+
+    return inside
 
 def calc_distance(lat1, lon1, lat2, lon2):
     # calcular distancia en km entre dos puntos geograficos usando la formula de
@@ -83,5 +118,4 @@ def delete_tuits_no_coords():
     db = dataset.connect("sqlite:///tuits.db")
     table = db['tuits']
     table.delete(latitude=None)
-
 
