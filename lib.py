@@ -2,6 +2,8 @@ def tuit_inside_jail(status_id, poly):
     """
     Finds out whether a tuit has been posted from within a jail based on 
     coordinates of a polygon.
+    Using the Ray casting algoritm
+
     http://stackoverflow.com/a/16625697
     """
     import dataset
@@ -28,7 +30,6 @@ def tuit_inside_jail(status_id, poly):
                     if p1y != p2y:
                         xints = (y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
                     if p1x == p2x or x <= xints:
-                        print p1x
                         inside = not inside
         p1x,p1y = p2x,p2y
 
