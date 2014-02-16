@@ -18,6 +18,7 @@ Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-pe
 # Jails missing coordinates
 
 * E.P. DE TUMBES	Predio Zarumilla - Puerto El Cura, TUMBES, TUMBES
+* E.P. DE CHOTA   Jr. Garcilazo de la Vega N° 231, CHOTA, CHOTA
 * E.P. DE PIURA (RIO SECO)	Pan. Norte-Carretera Paita, PIURA, CASTILLA
 * E.P. DE HUANCABAMBA	Av. Ramón Castilla S/N., HUANCABAMBA, HUANCABAMBA
 * E.P. DE SAN IGNACIO	Caserio Santiago Km. 1, SAN IGNACIO, SAN IGNACIO

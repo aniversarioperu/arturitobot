@@ -4,7 +4,6 @@ Penal Chachapoyas,-6.160182 -77.867651
 Penal Diroes,-12.040685 -76.911102
 Penal de Cañete,-13.06213 -76.295739
 Penal de Carquin,-11.089639 -77.624755
-Penal de Chota,-6.55831 -78.663357
 Penal de Cusco,-13.54307 -71.893224
 Penal de Huacariz,-7.190379 -78.48616
 Penal de Huancavelica,-12.784445 -74.978195
