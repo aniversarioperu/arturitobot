@@ -9,6 +9,7 @@ import sys
 import lib
 import argparse
 from argparse import RawTextHelpFormatter
+import find_and_retuit
 
 
 
@@ -43,3 +44,4 @@ for carcel in carceles:
 
 generate_pages()
 lib.delete_tuits_no_coords()
+find_and_retuit.find_and_retuit()
