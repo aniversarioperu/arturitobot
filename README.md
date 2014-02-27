@@ -20,6 +20,10 @@ Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-pe
 * pip install dateutils
 * pip install requests
 
+# How to run this bot
+
+> python tuit_retriever.py
+
 # Jails missing coordinates
 
 * E.P. DE TUMBES	Predio Zarumilla - Puerto El Cura, TUMBES, TUMBES

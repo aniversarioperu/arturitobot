@@ -18,12 +18,20 @@ parser = argparse.ArgumentParser(description=description,formatter_class=RawText
 parser.add_argument('-p', '--page', action='store_true', 
         help='Generate Google Map page',
         required=False, dest='page')
+parser.add_argument('-r', '--retweet', action='store_true', 
+        help='Only do retweets',
+        required=False, dest='retweet')
 
 args = parser.parse_args()
 
 if args.page == True:
     print "Generating page"
     generate_pages()
+    sys.exit()
+
+if args.retweet == True:
+    print "Retweeting"
+    find_and_retuit.find_and_retuit()
     sys.exit()
 
 # open file with coordinates
