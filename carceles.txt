@@ -23,4 +23,4 @@ Penal de Trujillo,-8.027402 -79.056827
 Penal Maranguita,-8.409885 -74.55284
 Penal San Jorge,-12.056486 -77.027899
 Penal Santa Mónica,-12.173532 -77.019076
-Penal Virgen de las Mercerces,-12.165821,-77.009842
+Penal Virgen de las Mercerces,-12.165821 -77.009842
