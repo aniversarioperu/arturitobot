@@ -22,7 +22,7 @@ Marita](http://aniversarioperu.utero.pe/2014/02/11/vigilando-las-carceles-del-pe
 
 # How to run this bot
 
-> python tuit_retriever.py
+  ``python tuit_retriever.py``
 
 # Jails missing coordinates
 

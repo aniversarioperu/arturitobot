@@ -1,4 +1,3 @@
-Carceleta Palacio de Justicia,-12.057672 -77.034927
 Penal Castro Castro,-11.983703 -76.989528
 Penal Chachapoyas,-6.160182 -77.867651
 Penal Diroes,-12.040685 -76.911102
