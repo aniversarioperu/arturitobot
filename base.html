@@ -11,15 +11,9 @@
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         
+        <link href="jumbotron-narrow.css" rel="stylesheet">
+        
         <style>
-            .container {
-                max-width: 900px;
-            }
-            body {
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
-            }
             #map_canvas {
                 max-width: 900px;
                 height: 500px;
@@ -155,7 +149,47 @@
     </head>
   <body>
 
-      <div class="container">
+    <div class="container">
+
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#this_bar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a href="http://aniversarioperu.me/">AniversarioPerú</a></h3>
+        </div>
+
+        <div class="collapse navbar-collapse" id="this_bar">
+            <ul class="nav nav-pills pull-right" style="margin-top: 10px;">
+                <li><a href="http://aniversarioperu.me">Inicio</a></li>
+                <li class="dropdown active">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Proyectos <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://aniversarioperu.me/proyectos">TODOS</a></li>
+                        <li class="divider"></li>
+                        <li><a href="http://aniversarioperu.me/manolo">Manolo</a></li>
+                        <li><a href="http://aniversarioperu.utero.pe/2014/02/21/servulitobot-vigilante-del-servidor-del-uterope/">ServulitoBot</a></li>
+                        <li><a href="http://aniversarioperu.me/utero/todos_congresistas.html">Fiscalizando viajes de congresistas</a></li>
+                        <li><a href="http://aniversarioperu.me/arturitobot/">ArturitoBot</a></li>
+                        <li><a href="http://utero.pe/tag/curso-periodismo-de-datos/">Curso Periodismo de Datos</a></li>
+                        <li><a href="http://aniversarioperu.wordpress.com/2013/07/26/te-recuerdo-tu-narcoindulto-via-tuitbot/">Twitter bot para #narcoindultos</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cv">CV</a></li>
+                <li><a href="contacto">Contacto</a></li>
+                <li><a href="http://aniversarioperu.utero.pe">Blog</a></li>
+            </ul>
+        </div>
+      </nav>
+  
+
           <div class="row">
               <div class="col-xs-12 col-md-12 col-lg-12">
                 <h3>Vigilando las cárceles del Perú desde Twitter</h3>

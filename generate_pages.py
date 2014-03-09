@@ -5,6 +5,10 @@
 import dataset
 import re
 import codecs
+import config
+import os.path
+import subprocess
+import shutil
 
 
 def generate_pages():
@@ -27,10 +31,21 @@ def generate_pages():
 
     html = base_html.replace("{% content %}", out)
 
-    f = codecs.open("index.html", "w", "utf-8")
+    index_dest = os.path.join(config.base_url, "index.html")
+    f = codecs.open(index_dest, "w", "utf-8")
     f.write(html)
     f.close()
+    
+    cmd = "rsync -avu avatars " + os.path.join(config.base_url, ".")
+    p = subprocess.check_call(cmd, shell=True)
 
+    cmd = "rsync -avu img " + os.path.join(config.base_url, ".")
+    p = subprocess.check_call(cmd, shell=True)
+
+    cmd = "rsync -avu bootstrap " + os.path.join(config.base_url, ".")
+    p = subprocess.check_call(cmd, shell=True)
+
+    shutil.copy2("jumbotron-narrow.css", os.path.join(config.base_url, "jumbotron-narrow.css"))
 
 def main():
     generate_pages()
