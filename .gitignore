@@ -2,3 +2,5 @@
 .*swp
 config.py
 *db
+tuits.db
+tuits.db.bak
