@@ -1,3 +1,27 @@
+def delete_old_tuits():
+    import dataset
+    db = dataset.connect("sqlite:///tuits.db")
+    table = db['tuits']
+    res = db.query("select * from tuits where in_jail != 'yes'")
+    j = 0
+    for i in res:
+        j += 1
+
+    res = db.query("select * from tuits where in_jail != 'yes' order by status_id desc")
+    j = 0
+
+    to_delete = ""
+    for i in res:
+        j += 1
+        if j == 200:
+            to_delete = i['status_id']
+
+    query = "delete from tuits where status_id < " + str(to_delete)
+    query += " and in_jail != 'yes'"
+    db.query(query)
+
+
+
 def tuit_inside_jail(status_id, poly):
     """
     Finds out whether a tuit has been posted from within a jail based on 

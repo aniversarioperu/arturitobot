@@ -53,3 +53,4 @@ for carcel in carceles:
 generate_pages()
 lib.delete_tuits_no_coords()
 find_and_retuit.find_and_retuit()
+lib.delete_old_tuits()
