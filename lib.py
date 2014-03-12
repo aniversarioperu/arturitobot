@@ -79,6 +79,7 @@ def create_database():
             table.create_column('status_id', sqlalchemy.BigInteger)
             table.create_column('text', sqlalchemy.Text)
             table.create_column('created_at', sqlalchemy.String)
+            table.create_column('in_jail', sqlalchemy.String)
             table.create_column('latitude', sqlalchemy.Float)
             table.create_column('longitude', sqlalchemy.Float(precision=7))
             table.create_column('retuited', sqlalchemy.Text)

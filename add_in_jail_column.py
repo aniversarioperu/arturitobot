@@ -51,5 +51,5 @@ for i in tuits_to_update:
     j = {}
     j['in_jail'] = i['in_jail']
     j['id'] = i['id']
+    print j
     table.upsert(j, ['id'])
-    print j['id'], j['in_jail']

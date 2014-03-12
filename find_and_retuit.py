@@ -50,12 +50,14 @@ def find_and_retuit():
                         retuits.append(i['status_id'])
                     except:
                         print "Error", r.text
+
     
     table = db['tuits']
     for i in retuits:
-        data = dict(status_id=i, retuited="yes")
+        data = dict(status_id=i, retuited="yes", in_jail="yes")
         print data
         table.update(data, ['status_id'])
+
     
 
 if __name__ == "__main__":
