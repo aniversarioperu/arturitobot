@@ -12,7 +12,11 @@ import shutil
 
 
 def generate_pages():
-    db = dataset.connect("sqlite:///tuits.db")
+    import os
+    import config
+
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + dbfile)
 
     res = db.query("select * from tuits")
 

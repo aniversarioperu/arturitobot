@@ -10,7 +10,11 @@ penal = u"Penal Santa Mónica"
 coord = [-12.173532,-77.019076]
 
 def delete(penal, coord):
-    db = dataset.connect("sqlite:///tuits.db")
+    import config
+    import os
+
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + dbfile)
     table = db['tuits']
     res = table.find(carcel=penal)
 

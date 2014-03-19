@@ -11,8 +11,8 @@ import datetime
 import codecs
 import lib
 
-
-db = dataset.connect("sqlite:///tuits.db")
+dbfile = os.path.join(config.local_folder, "tuits.db")
+db = dataset.connect("sqlite:///" + dbfile)
 table = db['tuits']
 
 f = codecs.open(os.path.join(config.local_folder, "carceles_limites.csv"))

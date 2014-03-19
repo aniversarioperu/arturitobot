@@ -1,6 +1,10 @@
 def delete_old_tuits():
     import dataset
-    db = dataset.connect("sqlite:///tuits.db")
+    import config
+    import os
+
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + dbfile)
     table = db['tuits']
     res = db.query("select * from tuits where in_jail != 'yes'")
     j = 0
@@ -35,8 +39,8 @@ def tuit_inside_jail(status_id, poly):
     import os.path
     import math
 
-    db_file = os.path.join(config.local_folder, "tuits.db")
-    db = dataset.connect("sqlite:///" + db_file)
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + dbfile)
     table = db['tuits']
     res = table.find_one(status_id=status_id)
     y = res['latitude']
@@ -80,8 +84,11 @@ def calc_distance(lat1, lon1, lat2, lon2):
 
 
 def insert_data(obj):
+    import os, config
     import dataset
-    db = dataset.connect('sqlite:///tuits.db')
+
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect('sqlite:///' + dbfile)
     table = db['tuits']
 
     if not table.find_one(status_id=obj['status_id']):
@@ -90,11 +97,13 @@ def insert_data(obj):
 def create_database():
     import dataset
     import os.path
-    database_file = "tuits.db"
-    if not os.path.isfile(database_file):
+    import os, config
+
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    if not os.path.isfile(dbfile):
         try:
             print "Creating database"
-            db = dataset.connect('sqlite:///' + database_file)
+            db = dataset.connect('sqlite:///' + dbfile)
             table = db.create_table("tuits")
             table.create_column('carcel', sqlalchemy.String)
             table.create_column('utc_offset', sqlalchemy.Integer)
@@ -121,9 +130,11 @@ def get_profile_image(url):
 def download_profile_image(url, screen_name):
     import requests    
     import os.path
+    import os
+    import config
 
     # folder to keep our twitter profile images
-    directory = "avatars"
+    directory = os.path.join(config.local_folder, "avatars")
 
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -141,8 +152,11 @@ def download_profile_image(url, screen_name):
 
 def delete_tuits_no_coords():
     import dataset
+    import config, os
+
     # drop tuits with no coordinates
-    db = dataset.connect("sqlite:///tuits.db")
+    dbfile = os.path.join(config.local_folder, "tuits.db")
+    db = dataset.connect("sqlite:///" + dbfile)
     table = db['tuits']
     table.delete(latitude=None)
 
