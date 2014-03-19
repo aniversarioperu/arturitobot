@@ -15,8 +15,8 @@
         
         <style>
             #map_canvas {
-                max-width: 900px;
-                height: 500px;
+                max-width: 800px;
+                height: 600px;
                 background-color: #CCC;
             }
         </style>
@@ -193,7 +193,12 @@
           <div class="row">
               <div class="col-xs-12 col-md-12 col-lg-12">
                 <h3>Vigilando las cárceles del Perú desde Twitter</h3>
-                <p>Este es un mapa interactivo. Creado por 
+                <p>
+                Este bot (<a href="https://twitter.com/ArturitoBot">@ArturitoBot</a>) colecta información de Twitter buscando tuits que
+                hayan sido emitidos en las proximidades de las cárceles
+                peruanas. Si los tuits fueron emitidos desde el interior del
+                alguna prisión, <a href="https://twitter.com/ArturitoBot">@ArturitoBot</a> retuiteará al usuario</p>
+                Este es un mapa interactivo. Creado por 
                 <a
                     href="https://twitter.com/aniversarioperu">@AniversarioPeru</a>.
               </div>
@@ -221,8 +226,14 @@
         </div>
 
           <div class="row">
-              <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="col-xs-9 col-md-9 col-lg-9">
+                  <p><b>Hacer click sobre cada marcador para ver el tuit original:</b></p>
                   <div id="map_canvas"></div>
+              </div>
+              <div class="col-xs-3 col-md-3 col-lg-3">
+                  <p><b>Tuits desde prisiones:</b></p>
+              <a class="twitter-timeline" href="https://twitter.com/ArturitoBot" data-widget-id="446146853571026945">Tweets by @ArturitoBot</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
               </div>
         </div>
 
