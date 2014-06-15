@@ -39,7 +39,17 @@ def generate_pages():
     f = codecs.open(index_dest, "w", "utf-8")
     f.write(html)
     f.close()
-    
+
+    # for iframe
+    f = codecs.open("base2.html", "r", "utf-8")
+    base_html = f.read()
+    f.close()
+    html = base_html.replace("{% content %}", out)
+    index_dest = os.path.join(config.base_url, "iframe.html")
+    f = codecs.open(index_dest, "w", "utf-8")
+    f.write(html)
+    f.close()
+
     cmd = "rsync -avu avatars " + os.path.join(config.base_url, ".")
     p = subprocess.check_call(cmd, shell=True)
 
