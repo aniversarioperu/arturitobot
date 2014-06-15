@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ArturitoBot | Vigilando las cárceles del Perú desde Twitter</title>
+
+        <link rel="icon" type="image/png" href="favicon.png">
+
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="jumbotron-narrow.css" rel="stylesheet">
+        
+        <style>
+            .container {
+                max-width: 100%;
+            }
+            body {
+                background-color: black;
+            }
+            #map_canvas {
+                height: 600px;
+                background-color: #CCC;
+            }
+        </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?libraries=geometry,visualization&sensor=false"></script>
+        <script>
+            function initialize() {
+
+                var carceles = 
+                [
+"Carceleta Palacio de Justicia",
+"Penal Castro Castro",
+"Penal Chachapoyas",
+"Penal Diroes",
+"Penal de Cañete",
+"Penal de Carquin",
+"Penal de Chota",
+"Penal de Cusco",
+"Penal de Huacariz",
+"Penal de Huancavelica",
+"Penal de Huánuco",
+"Penal de Huaral",
+"Penal de Huaraz",
+"Penal de Jaen",
+"Penal de Lurigancho",
+"Penal de Moyobamba",
+"Penal de Picsi (Chiclayo)",
+"Penal de Piedras Gordas",
+"Penal de Pucallpa",
+"Penal de Puerto Maldonado",
+"Penal de Sullana",
+"Penal de Tarma",
+"Penal de Trujillo",
+"Penal Maranguita",
+"Penal San Jorge",
+"Penal Santa Mónica",
+"Penal Virgen de las Mercerces",
+]
+                var results = 
+[
+["","Carceleta Palacio de Justicia",-12.057672,-77.034927],
+["","Penal Castro Castro",-11.983703,-76.989528],
+["","Penal Chachapoyas",-6.160182,-77.867651],
+["","Penal Diroes",-12.040685,-76.911102],
+["","Penal de Cañete",-13.06213,-76.295739],
+["","Penal de Carquin",-11.089639,-77.624755],
+["","Penal de Chota",-6.55831,-78.663357],
+["","Penal de Cusco",-13.54307,-71.893224],
+["","Penal de Huacariz",-7.190379,-78.48616],
+["","Penal de Huancavelica",-12.784445,-74.978195],
+["","Penal de Huánuco",-9.966684,-76.252908],
+["","Penal de Huaral",-11.546456,-77.160439],
+["","Penal de Huaraz",-9.526861,-77.534553],
+["","Penal de Jaen",-5.709677,-78.805791],
+["","Penal de Lurigancho",-11.991868,-76.996697],
+["","Penal de Moyobamba",-6.039473,-76.979866],
+["","Penal de Picsi (Chiclayo)",-6.718345,-79.762868],
+["","Penal de Piedras Gordas",-11.811425,-77.120079],
+["","Penal de Pucallpa",-8.406425,-74.630594],
+["","Penal de Puerto Maldonado",-12.59892,-69.200146],
+["","Penal de Sullana",-4.897527,-80.694613],
+["","Penal de Tarma",-11.422201,-75.691359],
+["","Penal de Trujillo",-8.027402,-79.056827],
+["","Penal Maranguita",-8.409885,-74.55284],
+["","Penal San Jorge",-12.056486,-77.027899],
+["","Penal Santa Mónica",-12.173532,-77.019076],
+["","Penal Virgen de las Mercerces",-12.165821,-77.009842],
+                
+                {% content %}
+];
+
+                var map_canvas = document.getElementById('map_canvas');
+                var map_options = {
+                    center: new google.maps.LatLng(-12.0885, -77.04418),
+                    zoom: 11,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(map_canvas, map_options);
+                var infowindow = new google.maps.InfoWindow({
+                    disableAutoPan: false
+                });
+
+
+                for(var i = 0; i < results.length; i++) {
+                    if( carceles.indexOf(results[i][1]) >= 0 ) {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(results[i][2], results[i][3]),
+                            title: results[i][1],
+                            icon: 'img/agent.png',
+                            zIndex: 9999,
+                            map: map
+                        });
+                    }
+                    else {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(results[i][2], results[i][3]),
+                            title: results[i][1],
+                            map: map
+                       });
+                    }
+
+                    google.maps.event.addListener(marker, "click", (function(marker, i) {
+                        return function() {
+                            if( results[i][0] == "") {
+                                out = results[i][1];
+                            }
+                            else {
+                                var out = "<img src='avatars/" + results[i][1].toLowerCase() + ".jpg' />";
+                                out += " " + results[i][1] + "<br />";
+                                out += "<a target='_blank' href='https://twitter.com/";
+                                out += results[i][1] + "/status/" + results[i][0] + "'>";
+                                out += " ver tuit original</a>";
+                            }
+                            infowindow.setContent(out);
+                            infowindow.open(map, marker);
+                        }
+                   })(marker, i));
+             }
+         }
+         google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+  <body>
+
+    <div class="container">
+
+  
+
+      
+
+
+          <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+                  <div id="map_canvas"></div>
+                <small style="color:white;" class="pull-right">&copy; AniversarioPeru 2014</small>
+              </div>
+        </div>
+
+
+    </div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <footer>
+            </footer>
+        </div>
+    </div>
+</div>
+<br />
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  
+  </body>
+</html>
